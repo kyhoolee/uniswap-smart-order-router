@@ -1,0 +1,238 @@
+.
+├── bin
+│   ├── cli
+│   └── cli.cmd
+├── CHANGELOG.md
+├── cli
+│   ├── base-command.ts
+│   ├── commands
+│   │   ├── quote-to-ratio.ts
+│   │   └── quote.ts
+│   └── types
+│       └── bunyan-debug-stream
+│           └── index.d.ts
+├── CODEOWNERS
+├── doc
+│   └── folder.txt
+├── hardhat.config.js
+├── jest.config.js
+├── LICENSE
+├── package.json
+├── package-lock.json
+├── README.md
+├── src
+│   ├── abis
+│   │   ├── erc20.json
+│   │   ├── gasDataArbitrum.json
+│   │   ├── gasPriceOracle.json
+│   │   ├── MixedRouteQuoterV2.sol
+│   │   │   └── MixedRouteQuoterV2.json
+│   │   ├── multicall2.json
+│   │   ├── Permit2.json
+│   │   ├── TokenFeeDetector.json
+│   │   └── v4-periphery
+│   │       ├── StateView.sol
+│   │       │   └── StateView.json
+│   │       └── V4Quoter.sol
+│   │           └── V4Quoter.json
+│   ├── index.ts
+│   ├── providers
+│   │   ├── cache-node.ts
+│   │   ├── cache.ts
+│   │   ├── caching
+│   │   │   └── route
+│   │   │       ├── index.ts
+│   │   │       ├── model
+│   │   │       │   ├── cached-routes.ts
+│   │   │       │   ├── cached-route.ts
+│   │   │       │   ├── cache-mode.ts
+│   │   │       │   └── index.ts
+│   │   │       └── route-caching-provider.ts
+│   │   ├── caching-gas-provider.ts
+│   │   ├── caching-subgraph-provider.ts
+│   │   ├── caching-token-list-provider.ts
+│   │   ├── caching-token-provider.ts
+│   │   ├── eip-1559-gas-price-provider.ts
+│   │   ├── eth-estimate-gas-provider.ts
+│   │   ├── eth-gas-station-info-gas-price-provider.ts
+│   │   ├── gas-price-provider.ts
+│   │   ├── index.ts
+│   │   ├── legacy-gas-price-provider.ts
+│   │   ├── multicall-provider.ts
+│   │   ├── multicall-uniswap-provider.ts
+│   │   ├── on-chain-gas-price-provider.ts
+│   │   ├── on-chain-quote-provider.ts
+│   │   ├── pool-provider.ts
+│   │   ├── portion-provider.ts
+│   │   ├── provider.ts
+│   │   ├── simulation-provider.ts
+│   │   ├── static-gas-price-provider.ts
+│   │   ├── subgraph-provider.ts
+│   │   ├── subgraph-provider-with-fallback.ts
+│   │   ├── swap-router-provider.ts
+│   │   ├── tenderly-simulation-provider.ts
+│   │   ├── token-fee-fetcher.ts
+│   │   ├── token-properties-provider.ts
+│   │   ├── token-provider.ts
+│   │   ├── token-validator-provider.ts
+│   │   ├── uri-subgraph-provider.ts
+│   │   ├── v2
+│   │   │   ├── caching-pool-provider.ts
+│   │   │   ├── caching-subgraph-provider.ts
+│   │   │   ├── pool-provider.ts
+│   │   │   ├── quote-provider.ts
+│   │   │   ├── static-subgraph-provider.ts
+│   │   │   ├── subgraph-provider.ts
+│   │   │   ├── subgraph-provider-with-fallback.ts
+│   │   │   └── uri-subgraph-provider.ts
+│   │   ├── v3
+│   │   │   ├── caching-pool-provider.ts
+│   │   │   ├── caching-subgraph-provider.ts
+│   │   │   ├── gas-data-provider.ts
+│   │   │   ├── pool-provider.ts
+│   │   │   ├── static-subgraph-provider.ts
+│   │   │   ├── subgraph-provider.ts
+│   │   │   ├── subgraph-provider-with-fallback.ts
+│   │   │   └── uri-subgraph-provider.ts
+│   │   └── v4
+│   │       ├── caching-pool-provider.ts
+│   │       ├── caching-subgraph-provider.ts
+│   │       ├── pool-provider.ts
+│   │       ├── static-subgraph-provider.ts
+│   │       ├── subgraph-provider.ts
+│   │       ├── subgraph-provider-with-fallback.ts
+│   │       └── uri-subgraph-provider.ts
+│   ├── routers
+│   │   ├── alpha-router
+│   │   │   ├── alpha-router.ts
+│   │   │   ├── config.ts
+│   │   │   ├── entities
+│   │   │   │   ├── index.ts
+│   │   │   │   └── route-with-valid-quote.ts
+│   │   │   ├── functions
+│   │   │   │   ├── best-swap-route.ts
+│   │   │   │   ├── calculate-ratio-amount-in.ts
+│   │   │   │   ├── compute-all-routes.ts
+│   │   │   │   └── get-candidate-pools.ts
+│   │   │   ├── gas-models
+│   │   │   │   ├── gas-costs.ts
+│   │   │   │   ├── gas-model.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── mixedRoute
+│   │   │   │   │   └── mixed-route-heuristic-gas-model.ts
+│   │   │   │   ├── tick-based-heuristic-gas-model.ts
+│   │   │   │   ├── v2
+│   │   │   │   │   └── v2-heuristic-gas-model.ts
+│   │   │   │   ├── v3
+│   │   │   │   │   └── v3-heuristic-gas-model.ts
+│   │   │   │   └── v4
+│   │   │   │       └── v4-heuristic-gas-model.ts
+│   │   │   ├── index.ts
+│   │   │   └── quoters
+│   │   │       ├── base-quoter.ts
+│   │   │       ├── index.ts
+│   │   │       ├── mixed-quoter.ts
+│   │   │       ├── model
+│   │   │       │   ├── index.ts
+│   │   │       │   └── results
+│   │   │       │       ├── get-quotes-result.ts
+│   │   │       │       ├── get-routes-result.ts
+│   │   │       │       └── index.ts
+│   │   │       ├── v2-quoter.ts
+│   │   │       ├── v3-quoter.ts
+│   │   │       └── v4-quoter.ts
+│   │   ├── index.ts
+│   │   ├── legacy-router
+│   │   │   ├── bases.ts
+│   │   │   ├── index.ts
+│   │   │   └── legacy-router.ts
+│   │   └── router.ts
+│   └── util
+│       ├── addresses.ts
+│       ├── amounts.ts
+│       ├── callData.ts
+│       ├── chains.ts
+│       ├── defaultBlocksToLive.ts
+│       ├── gas-factory-helpers.ts
+│       ├── hooksOptions.ts
+│       ├── index.ts
+│       ├── intent.ts
+│       ├── l2FeeChains.ts
+│       ├── log.ts
+│       ├── methodParameters.ts
+│       ├── metric.ts
+│       ├── mixedRouteFilterOutV4Pools.ts
+│       ├── onchainQuoteProviderConfigs.ts
+│       ├── pool.ts
+│       ├── protocols.ts
+│       ├── routes.ts
+│       ├── serializeRouteIds.ts
+│       ├── tenderlySimulationErrorBreakDown.ts
+│       └── unsupported-tokens.ts
+├── test
+│   ├── integ
+│   │   └── routers
+│   │       └── alpha-router
+│   │           └── alpha-router.integration.test.ts
+│   ├── test-util
+│   │   ├── comparisons.ts
+│   │   ├── getBalanceAndApprove.ts
+│   │   ├── mock-data.ts
+│   │   └── whales.ts
+│   └── unit
+│       ├── providers
+│       │   ├── cache-node.test.ts
+│       │   ├── caching
+│       │   │   └── route
+│       │   │       ├── model
+│       │   │       │   ├── cached-routes.test.ts
+│       │   │       │   └── cached-route.test.ts
+│       │   │       ├── route-caching-provider.test.ts
+│       │   │       └── test-util
+│       │   │           ├── inmemory-route-caching-provider.ts
+│       │   │           └── mocked-dependencies.ts
+│       │   ├── caching-token-list-provider.test.ts
+│       │   ├── gas-price-provider.test.ts
+│       │   ├── multicall-uniswap-provider.test.ts
+│       │   ├── on-chain-quote-provider.test.ts
+│       │   ├── portion-provider.test.ts
+│       │   ├── simulation-provider.test.ts
+│       │   ├── token-fee-fetcher.test.ts
+│       │   ├── token-properties-provider.test.ts
+│       │   ├── v2
+│       │   │   ├── quote-provider.test.ts
+│       │   │   └── subgraph-provider.test.ts
+│       │   ├── v3
+│       │   │   ├── gas-data-provider.test.ts
+│       │   │   └── pool-provider.test.ts
+│       │   └── v4
+│       │       ├── pool-provider.test.ts
+│       │       └── subgraph-provider.test.ts
+│       ├── routers
+│       │   └── alpha-router
+│       │       ├── alpha-router.test.ts
+│       │       ├── functions
+│       │       │   ├── best-swap-route.test.ts
+│       │       │   ├── calculate-ratio-amount-in.test.ts
+│       │       │   ├── compute-all-routes.test.ts
+│       │       │   ├── get-candidate-pools.test.ts
+│       │       │   └── routes.test.ts
+│       │       ├── gas-models
+│       │       │   ├── mixed-route-gas-model.test.ts
+│       │       │   ├── test-util
+│       │       │   │   ├── helpers.ts
+│       │       │   │   └── mocked-dependencies.ts
+│       │       │   ├── v2-gas-model.test.ts
+│       │       │   └── v3-gas-model.test.ts
+│       │       └── util
+│       │           └── gas-factory-helpers.test.ts
+│       └── util
+│           ├── amount.test.ts
+│           ├── mixedRouteFilterOutV4Pools.test.ts
+│           └── tenderlySimulationErrorBreakDown.test.ts
+├── tsconfig.json
+├── tsconfig.module.json
+├── tsconfig.oclif.json
+└── v2pools.json
+
+55 directories, 181 files
