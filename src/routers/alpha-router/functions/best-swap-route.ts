@@ -171,6 +171,7 @@ export async function getBestSwapRoute(
   return swapRoute;
 }
 
+// @NOTE: đây chính là hàm trọng tâm trong toàn bộ pipeline routing Uniswap v4/v3/v2
 export async function getBestSwapRouteBy(
   routeType: TradeType,
   percentToQuotes: { [percent: number]: RouteWithValidQuote[] },
@@ -697,8 +698,7 @@ export async function getBestSwapRouteBy(
       if (decimalsDiff < 0 && chainId === 324) {
         log.error(`Decimals diff is negative for ZkSync. This should not happen.
           usdTokenDecimals ${usdTokenDecimals} routeWithValidQuote.gasCostInUSD.currency.decimals
-          ${
-            routeWithValidQuote.gasCostInUSD.currency.decimals
+          ${routeWithValidQuote.gasCostInUSD.currency.decimals
           } ${JSON.stringify(routeWithValidQuote)}`);
       }
 
